@@ -11,10 +11,10 @@
     <div class="col-md-4 mb-5">
         <div class="cat-container">         
             <h3>{{strtoupper($product->name)}}</h3>
-            <a class="stretched-link" href=""><img src="{{asset('images/products/'. $product->image)}}"></a>
+            <a href="{{url('shop/'.$category->slug . '/' . $product->slug)}}"><img src="{{asset('images/products/'. $product->image)}}"></a>
             <h4>&#8362; {{$product->price}}</h4>
             <a href="" class="btn btn-primary">הוסף לעגלה</a>
-            <a href="" class="btn btn-info">קרא עוד</a>
+            <a href="{{url()->current(). '/'.$product->slug}}" class="btn btn-info">קרא עוד</a>
 
         </div>
 

@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Product;
 class ShopController extends Controller
 {
-     public function displayCategory($slug){
+    public function displayProduct($cat, $pro){
+        $date['product'] = Product::getProduct($cat, $pro);
+        return view('shop.product', $date);
+    }
+    public function displayCategory($slug){
         $date['category'] = Category::getCategory($slug);
         return view('shop.category', $date);
     }
