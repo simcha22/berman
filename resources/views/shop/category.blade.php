@@ -13,7 +13,7 @@
             <h3>{{strtoupper($product->name)}}</h3>
             <a href="{{url('shop/'.$category->slug . '/' . $product->slug)}}"><img src="{{asset('images/products/'. $product->image)}}"></a>
             <h4>&#8362; {{$product->price}}</h4>
-            <a href="" class="btn btn-primary">הוסף לעגלה</a>
+            <a href="{{url('add-to-cart/'. $product->id)}}" class="add-to-cart btn btn-primary">הוסף לעגלה</a>
             <a href="{{url()->current(). '/'.$product->slug}}" class="btn btn-info">קרא עוד</a>
 
         </div>
