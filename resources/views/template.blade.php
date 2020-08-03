@@ -42,12 +42,23 @@
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
+                            @if(session('id'))
+                                @if(session('role')===85)
+                                    <li class="nav-item">
+                                        <a class="nav-link font-weight-bolder" href="{{url('admin')}}">מערכת ניהול</a>
+                                    </li>
+                                    @endif
                             <li class="nav-item">
-                                <a class="nav-link" href="{{url('signup')}}">הרשם<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{url('logout')}}">{{session('name')}}, יציאה מהמערכת</a>
+                            </li>
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('signup')}}">הרשם</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{url('login')}}">הכנס<span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{url('login')}}">הכנס</a>
                             </li>
+                            @endif
                         </ul>
                         <a class="text-secondary" href="{{url('cart')}}">
                         <div id="mini-cart">

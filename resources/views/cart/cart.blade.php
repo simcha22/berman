@@ -44,6 +44,6 @@
     </tfoot>
 </table>
 <a href="{{url('delete-cart')}}" class="delete-cart">מחק עגלה</a>
-<p class="clearfix"><a href="" class="btn btn-primary float-right">עבור לקניה</a></p>
+<p class="clearfix"><a href="{{url('place-order')}}" class="btn btn-primary float-right">עבור לקניה</a></p>
 @endif
 @endsection

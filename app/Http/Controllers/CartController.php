@@ -2,11 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\order;
 use Illuminate\Http\Request;
 use App\Product;
 
 class CartController extends Controller {
 
+    public function placeOrder(){
+        if(session('id')){
+            if(\Cart::count()) {
+                Order::store();
+                return redirect('shop')->with('status', 'הזמנתכם נשלחה למערכת והיא מעובדת בדקות אלו אישור הזמנה יישלח למייל.');
+            }
+            return redirect('shop');
+        }
+
+        session(['place-order-process', true]);
+        return redirect('login')->with('status', '  אינך רשום במערכת בשביל להשלים את ההזמנה עליך להרשם קודם תודה');
+        //אפשר להוסיף קישור להרשמה
+    }
     public function deleteCart(){
         \Cart::destroy();
         return redirect('shop')->with('status', 'העגלה נמחקה בהצלחה');

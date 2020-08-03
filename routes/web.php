@@ -31,3 +31,9 @@ Route::get('signup', 'UserController@displaySignup');
 Route::post('signup', 'UserController@processSignup');
 Route::get('login', 'UserController@displayLogin');
 Route::post('login', 'UserController@processLogin');
+
+Route::get('logout', 'UserController@logout');
+Route::get('place-order', 'CartController@placeOrder');
+
+Route::get('admin', 'AdminController@displayDashboard')->middleware('validate_admin');
+Route::get('admin/orders', 'AdminController@displayOrders')->middleware('validate_admin');
