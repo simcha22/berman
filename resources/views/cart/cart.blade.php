@@ -4,7 +4,7 @@
         <h3>Your cart is empty<a href="{{url('shop')}}"> start soping</a></h3>
     @else
 <h1>Your cart </h1>
-
+<div class="table-responsive">
 <table class="table table-hover">
     <thead>
         <tr>
@@ -43,6 +43,7 @@
         </tr>
     </tfoot>
 </table>
+</div>
 <a href="{{url('delete-cart')}}" class="delete-cart">מחק עגלה</a>
 <p class="clearfix"><a href="{{url('place-order')}}" class="btn btn-primary float-right">עבור לקניה</a></p>
 @endif
