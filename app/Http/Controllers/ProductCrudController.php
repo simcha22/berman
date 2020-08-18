@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\CategoryEdit;
-use App\Http\Requests\CategoryHandler;
+use App\Product;
 use Illuminate\Http\Request;
-
-class CategoryCrudController extends Controller
+use App\Http\Requests\ProductHandler;
+class ProductCrudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +15,19 @@ class CategoryCrudController extends Controller
      */
     public function index()
     {
-        $data['categories'] = Category::getCategories();
-        return view('admin.category.list', $data);
+        $date['products'] = Product::getAll();
+        return view('admin.product.list', $date);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('admin.category.add');
+        $data['categories']= Category::getCategories();
+        return view('admin.product.add', $data);
     }
 
     /**
@@ -36,10 +36,10 @@ class CategoryCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryHandler $request)
+    public function store(ProductHandler $request)
     {
-        Category::store($request);
-        return redirect('admin/categories')->with('status', 'הקטגוריה נוספה בהצלחה.');
+        Product::store($request);
+        return redirect('admin/products')->with('status','המוצר נוסף בהצלחה');
     }
 
     /**
@@ -61,8 +61,7 @@ class CategoryCrudController extends Controller
      */
     public function edit($id)
     {
-        $date['category'] = Category::getCategoryById($id);
-        return view('admin.category.edit', $date);
+        //
     }
 
     /**
@@ -72,10 +71,9 @@ class CategoryCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryEdit $request, $id){
-        Category::updateCategory($id, $request);
-        return redirect('admin/categories')->with('status', 'הקטגוריה עודכנה בהצלחה.');
-
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**
@@ -86,8 +84,6 @@ class CategoryCrudController extends Controller
      */
     public function destroy($id)
     {
-        Category::deleteCategory($id);
-        return redirect('admin/categories')->with('status', 'הקטגוריה נמחקה בהצלחה');
-
+        //
     }
 }

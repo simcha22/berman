@@ -9,9 +9,9 @@
     @foreach ($category->products as $product)
 
     <div class="col-md-4 mb-5">
-        <div class="cat-container">         
+        <div class="cat-container">
             <h3>{{strtoupper($product->name)}}</h3>
-            <a href="{{url('shop/'.$category->slug . '/' . $product->slug)}}"><img src="{{asset('images/products/'. $product->image)}}"></a>
+            <a href="{{url('shop/'.$category->slug . '/' . $product->slug)}}"><img src="{{asset('storage/'.$product->image)}}"></a>
             <h4>&#8362; {{$product->price}}</h4>
             <a href="{{url('add-to-cart/'. $product->id)}}" class="add-to-cart btn btn-primary">הוסף לעגלה</a>
             <a href="{{url()->current(). '/'.$product->slug}}" class="btn btn-info">קרא עוד</a>

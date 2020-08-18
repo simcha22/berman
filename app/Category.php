@@ -10,6 +10,12 @@ class Category extends Model{
         return $this->hasMany('App\Product');
     }
 
+    public static function deleteCategory($id){
+        $category = self::findOrFail($id);
+        Storage::disk('public')->delete($category->image);
+        self::destroy($id);
+    }
+
     public static function updateCategory($id, $request){
         $category = self::findOrFail($id);
 
@@ -37,6 +43,6 @@ class Category extends Model{
     }
 
     public static function getCategories(){
-        return self::all()->sortBy('slug');
+        return self::orderBy('slug')->get();
     }
 }

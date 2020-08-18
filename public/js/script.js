@@ -104,6 +104,16 @@ $(document).ready(function () {
     $('a.delete-cart').on('click', function(){
         return confirm('האם הנך בטוח שברצונך למחוק את העגלה?');
     });
+
+    $('.open-modal').on('click', function () {
+        var that = $(this),
+        id =  that.data('id'),
+        name = that.data('name'),
+        form=$('#deiete-form'),
+        route = form.data('route');
+        form.attr('action', route + '/' + id);
+        $('#confirmModal .modal-body').text('האם הנך בטוח שברצונך למחוק את ' + name);
+    });
 });
 
 function debounce(func, wait, immediate){

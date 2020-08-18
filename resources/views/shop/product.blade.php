@@ -3,8 +3,8 @@
 
 <div class="row">
     <div class="col-md-7">
-        <h1>{{strtoupper($product->name)}}</h1> 
-        <p>{{$product->discription}}</p>
+        <h1>{{strtoupper($product->name)}}</h1>
+        <p>{{$product->description}}</p>
         <p>only for: &#8362; {{$product->price}}</p>
         <form id="add-to-cart" method="post" action="{{url('add-to-cart')}}">
             @csrf
@@ -18,7 +18,7 @@
         </form>
     </div>
     <div class="col-md-5">
-        <img src="{{asset('images/products/'.$product->image)}}">
+        <img src="{{asset('storage/'.$product->image)}}">
     </div>
 
 </div>
