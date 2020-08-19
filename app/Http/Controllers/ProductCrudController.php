@@ -76,6 +76,7 @@ class ProductCrudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::deleteProduct($id);
+        return redirect('admin/products')->with('status', 'המוצר נמחק בהצלחה.');
     }
 }

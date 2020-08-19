@@ -10,6 +10,12 @@ class Product extends Model {
     public function category() {
         return $this->belongsTo('App\Category');
     }
+    public static function deleteProduct($id)
+    {
+        $product = self::findOrFail($id);
+        Storage::disk('public')->delete($product->image);
+        self::destroy($id);
+    }
     public static function editProduct($request)
     {
         $product = self::findOrFail($request->product);
@@ -35,8 +41,7 @@ class Product extends Model {
         $product->description = $request->description;
         $product->category_id = $request->category;
         $product->image = $request->image->store('images/products','public');
-        $product->save();
-    }
+        $product->save();    }
     public static function getAll(){
         return self::orderBy('slug')->get();
     }
