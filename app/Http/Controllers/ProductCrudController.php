@@ -43,17 +43,6 @@ class ProductCrudController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -61,7 +50,9 @@ class ProductCrudController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['categories'] = Category::getCategories();
+        $data['product'] = Product::getProductById($id);
+        return view('admin.product.edit', $data);
     }
 
     /**
@@ -71,9 +62,10 @@ class ProductCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductHandler $request, $id)
     {
-        //
+        Product::editProduct($request);
+        return redirect('admin/products')->with('status', 'המוצר עודכן בהצלחה.');
     }
 
     /**
