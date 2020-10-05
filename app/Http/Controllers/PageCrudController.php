@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\PageHandler;
 class PageCrudController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class PageCrudController extends Controller
      */
     public function index()
     {
-        //
+        $data['pages'] = Page::getAll();
+        return view('admin.page.list', $data);
     }
 
     /**
@@ -32,9 +34,10 @@ class PageCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PageHandler $request)
     {
-        //
+        Page::store($request);
+        return redirect('admin/pages')->with('status','הדף הוסף בהצלחה.');
     }
 
     /**
