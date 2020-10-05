@@ -7,15 +7,14 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserSignup;
 
-class UserCrudController extends Controller
-{
+class UserCrudController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         $data['users'] = User::getUsers();
         return view('admin.user.list', $data);
     }
@@ -25,8 +24,7 @@ class UserCrudController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         $data['roles'] = Role::getAll();
         return view('admin.user.add', $data);
     }
@@ -37,8 +35,7 @@ class UserCrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserSignup $request)
-    {
+    public function store(UserSignup $request) {
         User::store($request);
         return redirect('admin/users')->with('status', 'המשתמש נוסף בהצלחה');
     }
@@ -49,8 +46,7 @@ class UserCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -60,9 +56,10 @@ class UserCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id) {
+        $data['user'] = User::getUser($id);
+        $data['roles'] = Role::getAll();
+        return view('admin.user.edit', $data);
     }
 
     /**
@@ -72,9 +69,9 @@ class UserCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(UserSignup $request, $id) {
+        User::editUser($request, $id);
+        return redirect('admin/users')->with('status', 'המשתמש עודכן בהצלחה');
     }
 
     /**
@@ -83,8 +80,12 @@ class UserCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        if ($id == session('id')) {
+            return redirect('admin/users')->with('status-fail', 'שגיאה לא ניתן למחוק משתמש זה');
+        }
+        User::deleteUser($id);
+        return redirect('admin/users')->with('status', 'המשתמש נמחק בהצלחה!!');
     }
+
 }
