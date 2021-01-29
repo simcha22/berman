@@ -4,7 +4,10 @@ img{
 .logo-img{
     width: 17vw;
 }
-
+.user-img{
+    width: 6em;
+    height: 4em;
+}
 .cat-container img{
     border: 1px solid #e2e2e2;
     padding: 20px;

@@ -43,3 +43,4 @@ Route::resource('admin/products', 'ProductCrudController')->middleware('validate
 Route::resource('admin/users', 'UserCrudController')->middleware('validate_admin');
 Route::resource('admin/pages', 'PageCrudController')->middleware('validate_admin');
 
+Route::get('{slug}', 'PageController@displayController');

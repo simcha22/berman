@@ -54,7 +54,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">לא</button>
-                        <form id="deiete-form" method="post" data-route="{{url('admin/users/')}}" action="">
+                        <form id="delete-form" method="post" data-route="{{url('admin/users/')}}" action="">
                             @csrf
                             @method('DELETE')
                         <button type="submit" class="btn btn-primary">מחק קטגוריה</button>

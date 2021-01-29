@@ -61,7 +61,7 @@
                             <p>אזהרה: מחיקת הקטגוריה תוביל למחיקת המוצרים שבה האם אתה בטוח?</p>
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">לא</button>
-                        <form id="deiete-form" method="post" data-route="{{url('admin/categories/')}}" action="">
+                        <form id="delete-form" method="post" data-route="{{url('admin/categories/')}}" action="">
                             @csrf
                             @method('DELETE')
                         <button type="submit" class="btn btn-primary">מחק קטגוריה</button>

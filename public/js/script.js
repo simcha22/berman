@@ -109,7 +109,7 @@ $(document).ready(function () {
         var that = $(this),
         id =  that.data('id'),
         name = that.data('name'),
-        form=$('#deiete-form'),
+        form=$('#delete-form'),
         route = form.data('route');
         form.attr('action', route + '/' + id);
         $('#confirmModal .modal-body').text('האם הנך בטוח שברצונך למחוק את ' + name);

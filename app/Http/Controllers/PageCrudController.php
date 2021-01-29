@@ -59,7 +59,8 @@ class PageCrudController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['page'] = Page::getPageById($id);
+        return view('admin.page.edit', $data);
     }
 
     /**
@@ -69,9 +70,10 @@ class PageCrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PageHandler $request, $id)
     {
-        //
+        Page::editPage($request);
+        return redirect('admin/pages')->with('status','הדף עודכן בהצלחה.');
     }
 
     /**
@@ -82,6 +84,8 @@ class PageCrudController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Page::deletePage($id);
+        return redirect('admin/pages')->with('status','הדף נמחק בהצלחה.');
+
     }
 }

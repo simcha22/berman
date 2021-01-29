@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\order;
+use App\Order;
 use Illuminate\Http\Request;
 use App\Product;
 

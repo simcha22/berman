@@ -33,6 +33,7 @@ class Product extends Model {
     public static function getProductById($id){
         return self::findOrFail($id);
     }
+
     public static function store($request){
         $product = new self();
         $product->name = $request->name;
@@ -41,7 +42,8 @@ class Product extends Model {
         $product->description = $request->description;
         $product->category_id = $request->category;
         $product->image = $request->image->store('images/products','public');
-        $product->save();    }
+        $product->save();
+    }
     public static function getAll(){
         return self::orderBy('slug')->get();
     }

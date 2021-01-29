@@ -45,6 +45,9 @@
 </table>
 </div>
 <a href="{{url('delete-cart')}}" class="delete-cart">מחק עגלה</a>
-<p class="clearfix"><a href="{{url('place-order')}}" class="btn btn-primary float-right">עבור לקניה</a></p>
-@endif
+<p class="clearfix">
+    <a href="{{url('place-order')}}" class="btn btn-primary float-right">עבור לקניה</a>
+    <a href="{{url('shop')}}" class="btn btn-primary float-right mr-2">הוסף מוצרים</a>
+</p>
+    @endif
 @endsection

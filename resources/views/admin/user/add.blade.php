@@ -1,10 +1,10 @@
 @extends('admin.template')
 @section('admin-content')
 <h1>הוסף משתמש חדש</h1>
-<form class="clearfix" method="post" action="{{url('admin/users')}}">
+<form class="clearfix" method="post" action="{{url('admin/users')}}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-        <label for="name">Your name</label>
+        <label for="name">הקלד את השם</label>
         <input type="text" class="form-control" id="name" name="name">
     </div>
     <div class="form-group">
@@ -17,19 +17,22 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="email">Email address</label>
+        <label for="email">הקלד את כתובת המייל שלך</label>
         <input type="email" class="form-control" id="email" name="email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <small id="emailHelp" class="form-text text-muted">לעולם לא נשתף את הדוא"ל שלך עם אף אחד אחר.</small>
     </div>
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">הקלד את הסיסמא</label>
         <input type="password" class="form-control" id="password" name="password">
     </div>
     <div class="form-group">
-        <label for="repassword">Reenter Password</label>
+        <label for="repassword">הקלד שוב את הסיסמא</label>
         <input type="password" class="form-control" id="password" name="password_confirmation">
     </div>
-
-    <button type="submit" class="btn btn-primary float-right">Submit</button>
+    <div class="form-group">
+        <label for="image">הוסף תמונה</label>
+        <input type="file" class="form-control-file" id="image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary float-right mb-5">הוסף משתמש</button>
 </form>
 @endsection
